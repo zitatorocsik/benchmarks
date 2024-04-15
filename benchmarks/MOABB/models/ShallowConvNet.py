@@ -124,11 +124,12 @@ class ShallowConvNet(torch.nn.Module):
         )
         # pool non-lin
         self.conv_module.add_module(
-            "log_1", Log(),
+            "log_1", Log(), 
         )
         self.conv_module.add_module(
             "dropout_1", torch.nn.Dropout(p=dropout),
         )
+        
         # Shape of intermediate feature maps
         out = self.conv_module(
             torch.ones((1,) + tuple(input_shape[1:-1]) + (1,))
